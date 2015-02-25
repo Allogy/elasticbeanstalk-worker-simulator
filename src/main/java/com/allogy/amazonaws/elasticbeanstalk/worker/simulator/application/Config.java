@@ -26,6 +26,15 @@ public class Config
     @Value("${targetUrl}")
     private String targetUrl;
 
+    @Value("${waitTimeSeconds}")
+    private Integer waitTimeSeconds;
+
+    @Value("${maxNumberOfMessages}")
+    private Integer maxNumberOfMessages;
+
+    @Value("${pauseTimeMilliseconds}")
+    private Integer pauseTimeMilliseconds;
+
     @Bean
     public AmazonSQS amazonSQS()
     {
@@ -45,24 +54,6 @@ public class Config
     }
 
     @Bean
-    public Integer waitTimeSeconds()
-    {
-        return 20;
-    }
-
-    @Bean
-    public Integer maxNumberOfMessages()
-    {
-        return 10;
-    }
-
-    @Bean
-    public Integer pauseTimeMilliseconds()
-    {
-        return 5 * 1000;
-    }
-
-    @Bean
     public String queueUrl()
     {
         return queueUrl;
@@ -72,5 +63,23 @@ public class Config
     public String targetUrl()
     {
         return targetUrl;
+    }
+
+    @Bean
+    public Integer waitTimeSeconds()
+    {
+        return waitTimeSeconds;
+    }
+
+    @Bean
+    public Integer maxNumberOfMessages()
+    {
+        return maxNumberOfMessages;
+    }
+
+    @Bean
+    public Integer pauseTimeMilliseconds()
+    {
+        return pauseTimeMilliseconds;
     }
 }
