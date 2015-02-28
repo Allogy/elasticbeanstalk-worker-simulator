@@ -50,6 +50,7 @@ public class BridgeService
 
             try
             {
+                logger.debug("Sleeping for {} milliseconds", pauseTimeMilliseconds);
                 Thread.sleep(pauseTimeMilliseconds);
             }
             catch (InterruptedException e)

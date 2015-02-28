@@ -64,10 +64,13 @@ public class WorkerApplication
         }
         catch (HttpStatusCodeException ex)
         {
-            return ex.getStatusCode();
+            HttpStatus statusCode = ex.getStatusCode();
+            logger.error("The HTTP Worker Application returned a non successful error code. statusCode={}", statusCode);
+            return statusCode;
         }
         catch (RestClientException ex)
         {
+            logger.error("Unable to connect to the HTTP Worker Application.");
             return HttpStatus.NOT_FOUND;
         }
     }
