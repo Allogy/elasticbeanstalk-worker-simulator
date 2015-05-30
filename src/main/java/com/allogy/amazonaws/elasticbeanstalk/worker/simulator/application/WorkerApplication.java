@@ -82,7 +82,7 @@ public class WorkerApplication
         HttpHeaders headers = new HttpHeaders();
         headers.set("User-Agent", "aws-sqsd/1.1 (simulated bridge)");
         headers.set("X-Aws-Sqsd-Msgid", messageId);
-        headers.set("X-Aws-Sqsd-Queue", messageWrapper.getQueueUrl());
+        headers.set("X-Aws-Sqsd-Queue", messageWrapper.getQueueName());
         headers.set("X-Aws-Sqsd-Receive-Count", Integer.toString(messageWrapper.getMessageCount()));
         headers.setContentType(MediaType.APPLICATION_JSON);
 

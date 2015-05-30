@@ -18,6 +18,10 @@ package com.allogy.amazonaws.elasticbeanstalk.worker.simulator.model;
 
 import com.amazonaws.services.sqs.model.Message;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Objects;
+
 /**
  * Wraps an SQS message and information about that message
  * into one single class.
@@ -76,5 +80,22 @@ public class MessageWrapper
     {
         setMessageCount(messageCount);
         return this;
+    }
+
+    public String getQueueName()
+    {
+        Objects.requireNonNull(queueUrl, "queueUrl must not be null");
+
+        URI queueUri;
+        try
+        {
+            queueUri = new URI(queueUrl);
+        }
+        catch (URISyntaxException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+        return queueUri.getPath().split("/", 3)[2];
     }
 }
