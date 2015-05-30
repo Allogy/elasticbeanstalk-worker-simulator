@@ -31,8 +31,10 @@ targetUrl=http://localhost:8080/myendpoint
 ## Running
 
 Run `./gradlew bootRun`
-(or on Windows: `./gradle.bat bootRun`)
+(or on Windows: `./gradlew.bat bootRun`)
 
 ## Extended Configuration
+
+The [Config.java](src/main/java/com/allogy/amazonaws/elasticbeanstalk/worker/simulator/application/Config.java) class documents all the configuration parameters. Any of the fields with an `@Value` annotation are configurable.
 
 See the [application.properties](src/main/resources/application.properties) file for the default values that the simulator uses when running. You can override any of these in your _config/application.properties_ file.
