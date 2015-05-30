@@ -30,24 +30,56 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class Config
 {
+    /**
+     * The AWS access key for the IAM user which will read from
+     * your SQS queue.
+     */
     @Value("${accessKey}")
     private String accessKey;
 
+    /**
+     * The AWS secret key for the IAM user which will read from
+     * your SQS queue.
+     */
     @Value("${secretKey}")
     private String secretKey;
 
+    /**
+     * The URL of the SQS queue from which this simulator reads
+     * messages.
+     */
     @Value("${queueUrl}")
     private String queueUrl;
 
+    /**
+     * The URL of your local web application. When the simulator
+     * receives a message, it will POST that message to this URL.
+     */
     @Value("${targetUrl}")
     private String targetUrl;
 
+    /**
+     * The duration in seconds that the simulator will wait for a
+     * message on the SQS queue. This value may be set to 0 which
+     * will use SQS short polling. If set to a non-zero positive
+     * value then SQS long polling is used. The valid values
+     * are determined by SQS, but currently 1-20.
+     */
     @Value("${waitTimeSeconds}")
     private Integer waitTimeSeconds;
 
+    /**
+     * The maximum number of messages which can be read from the
+     * queue at a time. The valid values are determined by SQS,
+     * but are currently 1-10.
+     */
     @Value("${maxNumberOfMessages}")
     private Integer maxNumberOfMessages;
 
+    /**
+     * The amount of time, in milliseconds, to wait in between
+     * SQS calls.
+     */
     @Value("${pauseTimeMilliseconds}")
     private Integer pauseTimeMilliseconds;
 
